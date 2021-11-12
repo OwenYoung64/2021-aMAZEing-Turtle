@@ -12,11 +12,15 @@ line_length = 50
 door_size = 30
 before_door = 20
 block_size = 40
+randmin = 10
+randmax = 50
 #Draw the maze
 while(numlines <= 24):
     if (numlines < 6):
         maze_maker.forward(line_length)
     else:
+        before_door = rand.randint(randmin, randmax)
+        if (before_door == )
         maze_maker.forward(before_door)
         maze_maker.penup()
         maze_maker.forward(door_size)
@@ -36,3 +40,21 @@ while(numlines <= 24):
 
 wn.listen()
 wn.mainloop()
+
+"""
+def spot_clicked(x, y):
+    t.goto(rand.randint(xmin, xmax), rand.randint(ymin, ymax))
+    scorechange()
+    addcolor()
+    sizechanger()
+
+def addcolor():
+    colorlist = ["black", "blue", "green", "yellow", "lime", "orange", "purple"]
+    t.fillcolor(rand.choice(colorlist))
+    t.stamp()
+    t.fillcolor(color)
+
+def sizechanger():
+    sizechange = [0.5, 1, 2, 3, 4, 2.5, 4.8]
+    t.turtlesize(rand.choice(sizechange))
+"""
