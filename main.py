@@ -1,60 +1,106 @@
+# Imports
 import turtle as trtl
 import random as rand
-#Set up variables
-wn = trtl.Screen()
-maze_maker = trtl.Turtle()
-maze_maker.goto(0, 0)
-maze_maker.speed(0)
-maze_maker.left(90)
-maze_maker.pensize(5)
-numlines = 0
-line_length = 50
-door_size = 30
-before_door = 20
-block_size = 40
-randmin = 10
-randmax = 50
-#Draw the maze
-while(numlines <= 24):
-    if (numlines < 6):
-        maze_maker.forward(line_length)
+
+#Setup Variables
+numSides = 25
+length = 20
+color = "black"
+doorSize = 40
+beforeDoor = 5
+
+#Turtle Settings
+painter = trtl.Turtle()
+painter.pencolor(color)
+painter.speed("fastest")
+painter.pensize(5)
+
+
+currentSide = 0
+currentSize = length
+preBarrier = 40
+
+while(currentSide < numSides):
+    if(currentSide < 4):
+        #painter.forward(currentSize)
+        print("Bruh")
     else:
-        before_door = rand.randint(randmin, randmax)
-        if (before_door == )
-        maze_maker.forward(before_door)
-        maze_maker.penup()
-        maze_maker.forward(door_size)
-        maze_maker.pendown()
-        #barriers
-        maze_maker.forward(before_door * 2.5)
-        maze_maker.right(90)
-        maze_maker.forward(block_size)
-        maze_maker.right(180)
-        maze_maker.forward(block_size)
-        maze_maker.right(90)
-        maze_maker.forward(line_length - door_size - before_door - before_door * 2.5)
-    maze_maker.right(90)
-    line_length += 20
-    numlines += 1
+        beforeDoor = rand.randint(length, currentSize - doorSize-length)
+        prebarrier = rand.randint(length, currentSize - length beforeDoor)
+
+        if(beforeDoor < prebarrier):
+
+            # Door Handle(r)
+            painter.forward(beforeDoor)
+            #painter.penup()
+            painter.pencolor("red")
+            painter.forward(doorSize)
+            painter.pencolor(color)
+            #painter.pendown()
+
+            # CFM Code Here
+            painter.forward(preBarrier)
+            painter.left(90)
+            painter.forward(length*2)
+            painter.right(180)
+            painter.forward(length*2)
+            painter.left(90)
+            # Wall End
+
+        elif(beforeDoor > prebarrier):
+
+            # CFM Code Here
+            painter.forward(beforeDoor)
+            painter.left(90)
+            painter.forward(length * 2)
+            painter.right(180)
+            painter.forward(length * 2)
+            painter.left(90)
+            # Wall End
+
+            # Door Handle(r)
+            painter.forward(prebarrier)
+            # painter.penup()
+            painter.pencolor("red")
+            painter.forward(doorSize)
+            painter.pencolor(color)
+            # painter.pendown()
 
 
-wn.listen()
+
+
+
+
+
+        else:
+
+            prebarrier = 40
+            beforeDoor = length * 2
+            # Door Handle(r)
+            painter.forward(beforeDoor)
+            # painter.penup()
+            painter.pencolor("red")
+            painter.forward(doorSize)
+            painter.pencolor(color)
+            # painter.pendown()
+
+            # CFM Code Here
+            painter.forward(preBarrier)
+            painter.left(90)
+            painter.forward(length * 2)
+            painter.right(180)
+            painter.forward(length * 2)
+            painter.left(90)
+            # Wall End
+
+
+        painter.forward(currentSize - doorSize - beforeDoor - preBarrier)
+
+    painter.left(90)
+    currentSize += length
+    currentSide+=1
+
+painter.hideturtle()
+
+wn = trtl.Screen()
 wn.mainloop()
-
-"""
-def spot_clicked(x, y):
-    t.goto(rand.randint(xmin, xmax), rand.randint(ymin, ymax))
-    scorechange()
-    addcolor()
-    sizechanger()
-
-def addcolor():
-    colorlist = ["black", "blue", "green", "yellow", "lime", "orange", "purple"]
-    t.fillcolor(rand.choice(colorlist))
-    t.stamp()
-    t.fillcolor(color)
-
-def sizechanger():
-    sizechange = [0.5, 1, 2, 3, 4, 2.5, 4.8]
-    t.turtlesize(rand.choice(sizechange))
-"""
